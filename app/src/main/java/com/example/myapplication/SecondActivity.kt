@@ -1,9 +1,9 @@
 package com.example.myapplication
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 
 class SecondActivity : AppCompatActivity() {
 
@@ -16,7 +16,8 @@ class SecondActivity : AppCompatActivity() {
         button = findViewById(R.id.button_2_activity)
 
         button.setOnClickListener {
-            val answerIntent = Intent().putExtra(KEY_EXTRA, "Hello im from activity 2!")
+            val answerIntent =
+                Intent().putExtra(resources.getString(R.string.key), "Hello im from activity 2!")
             setResult(RESULT_OK, answerIntent)
             finish()
         }

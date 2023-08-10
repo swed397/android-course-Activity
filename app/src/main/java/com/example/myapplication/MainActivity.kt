@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-const val KEY_EXTRA = "just key"
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,18 +33,19 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == ACTIVITY_ID) {
-            textView.text = "Result from Second Activity: ${data?.getStringExtra(KEY_EXTRA)}"
+            textView.text =
+                "Result from Second Activity: ${data?.getStringExtra(resources.getString(R.string.key))}"
         }
     }
 
     private fun setTextBySource() {
         val uri: Uri? = intent.data
 
-        if (uri != null) textView.text =
-            "${textView.text} Open from URI" else textView.text = "${textView.text} Open default"
+        textView.text = if (uri != null)
+            "${textView.text} Open from URI" else "${textView.text} Open default"
     }
 
-    companion object {
+    private companion object {
         const val ACTIVITY_ID = 0
     }
 }
